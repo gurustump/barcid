@@ -12,7 +12,7 @@ sidebars, comments, etc.
 require_once( 'library/bones.php' );
 
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
-// require_once( 'library/admin.php' );
+require_once( 'library/admin.php' );
 
 /*********************
 LAUNCH BONES
@@ -67,14 +67,14 @@ add_action( 'after_setup_theme', 'bones_ahoy' );
 /************* OEMBED SIZE OPTIONS *************/
 
 if ( ! isset( $content_width ) ) {
-	$content_width = 680;
+	$content_width = 900;
 }
 
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
-add_image_size( 'bones-thumb-600', 600, 150, true );
-add_image_size( 'bones-thumb-300', 300, 100, true );
+add_image_size( 'slide', 1920, 1080, true );
+add_image_size( 'slideMobile', 1024, 576, true );
 
 /*
 to add more sizes, simply copy a line from above
@@ -100,8 +100,8 @@ add_filter( 'image_size_names_choose', 'bones_custom_image_sizes' );
 
 function bones_custom_image_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        'bones-thumb-600' => __('600px by 150px'),
-        'bones-thumb-300' => __('300px by 100px'),
+        'slide' => __('1920px by 1080px'),
+        'slideMobile' => __('1024px by 576px'),
     ) );
 }
 
@@ -239,9 +239,18 @@ can replace these fonts, change it in your scss files
 and be up and running in seconds.
 */
 function bones_fonts() {
-  wp_enqueue_style('googleFonts', '//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
+	wp_enqueue_style('googleFonts', 'http://fonts.googleapis.com/css?family=Raleway:300,400,700,900');
+	//wp_enqueue_style('googleFonts', 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Oswald:400,300,700');
 }
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
+
+// shortcodes
+// root path shortcode
+function root_path_shortcode() {
+	$url = home_url('/');
+	return esc_url($url);
+}
+add_shortcode('root_path', 'root_path_shortcode');
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

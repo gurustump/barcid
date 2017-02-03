@@ -1,13 +1,18 @@
+<?php
+/*
+ Template Name: Sidebar Page
+*/
+?>
 <?php get_header(); ?>
 
 			<div id="content">
 
 				<div id="inner-content" class="cf">
 
-						<main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-							<?php $headBlockMeta = get_post_meta(get_the_ID(), '_barcid_page_header_block',true); ?>
+
 							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
 								<header class="page-header article-header<?php echo $headBlockMeta[0][primary_head] || $headBlockMeta[0][secondary_head] ? ' header-block' : ''; ?>">
@@ -25,9 +30,7 @@
 								</header> <?php // end article header ?>
 
 								<section class="entry-content cf" itemprop="articleBody">
-									<div class="wrap">
-										<?php the_content(); ?>
-									</div>
+									<?php the_content(); ?>
 								</section> <?php // end article section ?>
 
 								<?php comments_template(); ?>
@@ -37,6 +40,8 @@
 							<?php endwhile; endif; ?>
 
 						</main>
+
+						<?php get_sidebar(); ?>
 
 				</div>
 

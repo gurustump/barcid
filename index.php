@@ -1,6 +1,22 @@
 <?php get_header(); ?>
 
 			<div id="content">
+				<?php if( is_home() && get_option( 'page_for_posts' ) ) { ?>
+				<?php $headBlockMeta = get_post_meta(get_option('page_for_posts'), '_barcid_page_header_block',true); ?>
+				<header class="page-header article-header<?php echo $headBlockMeta[0][primary_head] || $headBlockMeta[0][secondary_head] ? ' header-block' : ''; ?>">
+					<div class="wrap">
+						<div class="head-primary">
+							<h1 class="page-title" itemprop="headline"><?php echo get_the_title( get_option( 'page_for_posts' ) ); ?></h1>
+							<?php echo wpautop($headBlockMeta[0][primary_head]) ; ?>
+						</div>
+						<?php if ($headBlockMeta[0][secondary_head]) { ?>
+						<div class="head-secondary">
+							<?php echo wpautop($headBlockMeta[0][secondary_head]) ; ?>
+						</div>
+						<?php } ?>
+					</div>
+				</header> <?php // end article header ?>
+				<?php } ?>
 
 				<div id="inner-content" class="wrap cf">
 
@@ -12,7 +28,7 @@
 
 								<header class="article-header">
 
-									<h1 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+									<h2 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 									<p class="byline entry-meta vcard">
                                                                         <?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
                        								/* the time the post was published */

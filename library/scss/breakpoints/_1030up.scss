@@ -10,5 +10,160 @@ be seen on the Desktop.
 ******************************************************************/
 
 .wrap {
-  width: 1040px;
+	max-width:1140px;
+}
+.header {
+	background:$dark-gray;
+}
+#logo {
+	font-size:3em;
+}
+.mobile-header-wrap {
+	float:left;
+	background:none;
+}
+.main-nav {
+	float:right;
+	height:auto;
+	width:auto;
+	position:static;
+	background:transparent;
+	.top-nav {
+		position:static;
+		background:transparent;
+		overflow:visible;
+		float:left;
+		& > li {
+			& > a {
+				padding:0 8px;
+				font-size:14px;
+				margin-top:0;
+				border:0;
+				height:60px;
+				line-height:60px;
+				@include box-sizing;
+				@include transition(height .35s, line-height .35s, color 0.35s ease-in-out, background-color 0.35s ease-in-out);
+			}
+			&.menu-item-search, &.menu-item-login, &.menu-item-logout {
+				& > a {
+					text-indent:-9999px;
+					width:18px;
+					padding-left:12px;
+				}
+			}
+			&.menu-item-search {
+				& > a {
+					background-position:50% -282px;
+				}
+			}
+			&.menu-item-login {
+				& > a {
+					background-position:50% -82px;
+				}
+			}
+			&.menu-item-logout {
+				& > a {
+					background-position:50% -182px;
+				}
+			}
+			.sub-menu {
+				border:0;
+				& > li {
+					float:none;
+					a {
+						/*background:#333;
+						@include css-gradient-plus-img($from: rgba($black, .1), $to: rgba($black, 0), $vstart:"top", $vend:"bottom", $url:"../images/skins-gray-light-grunge.jpg");*/
+						background:transparent;
+						border-color:#3e3e3e;
+						border-top:0;
+						margin-top:0;
+						padding:10px 25px;
+					}
+					.sub-menu {
+						background:transparent;
+						& > li a {
+							/*background:#333;
+							@include css-gradient-plus-img($from: rgba($black, .1), $to: rgba($black, 0), $vstart:"top", $vend:"bottom", $url:"../images/skins-gray-light-grunge.jpg");*/
+							background:transparent;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.trigger-nav {
+	display:none;
+}
+
+
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+
+.header-block {
+	& > .wrap {
+		@include clearfix;
+	}
+	.head-primary, .head-secondary {
+		width:50%;
+		float:left;
+		@include box-sizing;
+	}
+	.head-primary {
+		padding-right:20px;
+		border-right:1px solid $accent-light;
+	}
+	.head-secondary {
+		padding-left:20px;
+		border-left:1px solid $accent-light;
+		margin-left:-1px;
+	}
+	h1 {
+		margin-bottom:.25em;
+	}
+}
+
+/******************************************************************
+SLICK SLIDER STYLES
+******************************************************************/
+.slider-container {
+	height:100%;
+	padding-top:0;
+}
+.slider {
+	height:100%;
+	.slick-list, .slick-track {
+		height:100%;
+	}
+	.slick-slide {
+		position:relative;
+		background-size:cover;
+		background-position:50% 50%;
+		&.slide-theme-light {
+			background:$white;
+			.slide-content {
+				color:$text-color;
+			}
+		}
+		/* .bg-img {
+			display:block;
+		} */
+		.slide-content {
+			display:block;
+			.slide-content-block {
+				padding:15px 28px;
+				@include box-sizing;
+			}
+			h2 {
+				font-size:4em;
+			}
+			h3 {
+				font-size:2.75em;
+			}
+		}
+		.mobile-slide-content {
+			display:none;
+		}
+	}
 }

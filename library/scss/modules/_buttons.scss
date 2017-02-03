@@ -25,32 +25,33 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
 *********************/
 
 %btn {
-  display: inline-block;
-  position: relative;
-  font-family: $sans-serif;
-  text-decoration: none;
-  color: $white;
-  font-size: 0.9em;
-  font-size: 34px;
-  line-height: 34px;
-  font-weight: normal;
-  padding: 0 24px;
-  border-radius: 4px;
-  border: 0;
-  cursor: pointer;
-  @include transition(background-color 0.14s ease-in-out);
+	display: inline-block;
+	position: relative;
+	font-family:$button-text;
+	text-decoration: none;
+	color: $white;
+	font-size:1em;
+	line-height:2.4em;
+	height:2.4em;
+	text-transform:uppercase;
+	font-weight: normal;
+	padding: 0 24px;
+	border-radius: 4px;
+	border: 0;
+	cursor: pointer;
+	@include transition(background-color 0.35s ease-in-out);
 
-  // hovering on the btn
-  &:hover, &:focus {
-    color: $white;
-    text-decoration: none;
-    outline: none;
-  } // end hover
+	// hovering on the btn
+	&:hover, &:focus {
+		color: $white;
+		text-decoration: none;
+		outline: none;
+	} // end hover
 
-  // clicking on the button
-  &:active {
-    top: 1px; // adds a tiny hop to the click
-  } // end active
+	// clicking on the button
+	&:active {
+		top: 1px; // adds a tiny hop to the click
+	} // end active
 
 } // end .button
 
@@ -59,17 +60,65 @@ An example button.
 You can use this example if you want. Just replace all the variables
 and it will create a button dependant on those variables.
 */
-.blue-btn {
-  @extend %btn; // here we load the btn defaults
-  background-color: $blue;
+.btn {
+	@extend %btn;
+}
+.btn-yellow {
+	@extend %btn;
+	background-color:$yellow;
+	color:$text-color;
 
-  &:hover,
-  &:focus {
-    background-color: darken($blue, 4%);
-  } // end hover
+	&:hover,
+	&:focus {
+		background-color: darken($yellow, 10%);
+	}
+}
+.btn-orange {
+	@extend %btn;
+	background-color:$orange;
 
-  &:active {
-    background-color: darken($blue, 5%);
-  } // end active
+	&:hover,
+	&:focus {
+		background-color: darken($orange, 10%);
+	}
+}
+.btn-blue {
+	@extend %btn; // here we load the btn defaults
+	background-color: $blue;
 
-} // end blue button
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: darken($blue, 10%);
+	}
+
+}
+.btn-search {
+	height:40px;
+	text-indent:-9999px;
+	position:relative;
+	&:before, &:after {
+		content:'';
+		display:block;
+		color:$white;
+	}
+	&:before {
+		height:15px;
+		width:15px;
+		border:3px solid $white;
+		@include border-radius(50%);
+		position:absolute;
+		left:50%;
+		top:50%;
+		@include transform(translate(-8px, -13px));
+	}
+	&:after {
+		width:3px;
+		height:12px;
+		background:$white;
+		position:absolute;
+		left:50%;
+		top:50%;
+		@include transform(rotate(45deg) translate(-6px, 8px));
+	}
+}

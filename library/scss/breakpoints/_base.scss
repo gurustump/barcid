@@ -14,15 +14,45 @@ and will be used across all viewports.
 /*********************
 GENERAL STYLES
 *********************/
+html.barcid {
+	height:100%;
+	margin-top:0 !important;
+	overflow-x:hidden;
+	background:$white;
+	&.mobile-nav-active {
+		body {
+			overflow:hidden;
+			height:100%;
+			header.header, #inner-header {
+				height:100%;
+			}
+			#inner-header {
+				position:relative;
+				overflow-y:auto;
+				overflow-x:hidden;
+			}
+		}
+	}
+}
 
 body {
-	font-family: $lato;
-	font-size: 100%;
-	line-height: 1.5;
-	color: $text-color;
-	background-color: $gray;
+	height:100%;
+	font-family: $standard;
+	font-size:14px;
+	line-height:1.4;
+	color:$text-color;
+	background-color:$white;
   	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
+}
+#container {
+	height:100%;
+	#content {
+		min-height:100%;
+		margin-bottom:-48px;
+		padding:60px 0 48px;
+		@include box-sizing;
+	}
 }
 
 /********************
@@ -71,8 +101,8 @@ LAYOUT & GRID STYLES
 *********************/
 
 .wrap {
-	width: 96%;
 	margin: 0 auto;
+	padding:0 12px;
 }
 
 /*********************
@@ -81,6 +111,7 @@ LINK STYLES
 
 a, a:visited {
 	color: $link-color;
+	@include transition(color .375s);
 
 	/* on hover */
 	&:hover, &:focus {
@@ -108,8 +139,10 @@ H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+	font-family:$heading;
 	text-rendering: optimizelegibility;
-	font-weight: 500;
+	font-weight: 400;
+	line-height:1em;
 	/*
 	if you're going to use webfonts, be sure to check your weights
 	http://css-tricks.com/watch-your-font-weight/
@@ -122,30 +155,37 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 }
 
 h1, .h1 {
-	font-size: 2.5em;
-	line-height: 1.333em;
+	font-size:3em;
+	margin-bottom:.25em;
+	letter-spacing:.2em;
 }
 
 h2, .h2 {
-	font-size: 1.75em;
-	line-height: 1.4em;
-	margin-bottom: 0.375em;
+	font-size:2.5em;
+	line-height:1.4em;
+	margin-bottom:0.375em;
+	letter-spacing:.2em;
 }
 
 h3, .h3 {
-	font-size: 1.125em;
+	font-size:2em;
+	margin-bottom:0.375em;
 }
 
 h4, .h4 {
-	font-size: 1.1em;
-	font-weight: 700;
+	font-size:1.7em;
+	margin-bottom:0.5em;
 }
 
 h5, .h5 {
-	font-size: 0.846em;
+	font-size:1.4em;
 	line-height: 2.09em;
 	text-transform: uppercase;
 	letter-spacing: 2px;
+}
+
+h6, .h6 {
+	font-size:1.2em;
 }
 
 /*********************
@@ -153,16 +193,46 @@ HEADER STYLES
 *********************/
 
 .header {
-	background-color: $black;
+	width:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:8999;
 }
-
-	#logo {
-		margin: 0.75em 0;
-
-		a {
-			color: $white;
+#logo {
+	margin:0 0 0 75px;
+	float:left;
+	font-weight:900;
+	text-transform:uppercase;
+	height:60px;
+	line-height:60px;
+	hyphens:none;
+	font-size:2em;
+	position:relative;
+	a {
+		color:$white;
+		display:block;
+		&:hover, &:focus, &:active {
+			outline:0;
 		}
 	}
+	&:before {
+		content:"";
+		background:url(../images/barcid-logo-page-header.png) no-repeat;
+		display:block;
+		position:absolute;
+		top:1px;
+		left:-102px;
+		height:100%;
+		width:87px;
+	}
+}
+
+.mobile-header-wrap {
+	background-color:$dark-gray;
+	margin:0 -12px;
+	@include clearfix;
+}
 
 /*********************
 NAVIGATION STYLES
@@ -246,247 +316,536 @@ and more scalable.
 
 } /* end .nav */
 
+.main-nav-container {
+	float:right;
+	font-family:$heading;
+	font-size:20px;
+	text-transform:uppercase;
+}
+.main-nav {
+	position:absolute;
+	left:110%;
+	top:0;
+	width:100%;
+	background:$dark-gray;
+	height:100%;
+	@include transition(left .35s);
+	&.active {
+		left:0;
+	}
+	.top-nav {
+		overflow:auto;
+		z-index:9998;
+		background:$med-dark-gray;
+		text-transform:uppercase;
+		a {
+			white-space:nowrap;
+			border-top:1px solid $med-dark-gray-highlight;
+			border-bottom:1px solid $med-dark-gray-highlight;
+			margin-top:-1px;
+			@include transition(color 0.35s ease-in-out, background-color 0.35s ease-in-out);
+			&:hover, &:focus, &:active {
+				text-decoration:none;
+				outline:0;
+			}
+			&:hover {
+				// color:$dark-gray;
+				background-color:$accent-color !important; 
+				text-decoration:none;
+			}
+		}
+		& > li {
+			& > a {
+				outline:none;
+				font-size:13px;
+				padding:12px;
+				height:34px;
+				line-height:34px;
+				letter-spacing:.2em;
+			}
+			&.current-menu-item {
+				& > a {
+					background-color:rgba(255,255,255,.10);
+				}
+			}
+			&.inactive {
+				display:none;
+			}
+			&.menu-item-search, &.menu-item-login, &.menu-item-logout {
+				& > a {
+					background-image:url(../images/ic.png);
+					background-repeat:no-repeat;
+					padding-left:40px;
+				}
+			}
+			&.menu-item-search {
+				& > a {
+					background-position:0 -282px;
+				}
+			}
+			&.menu-item-login {
+				& > a {
+					background-position:0 -82px;
+				}
+			}
+			&.menu-item-logout {
+				& > a {
+					background-position:0 -182px;
+				}
+			}
+			.sub-menu {
+				margin:0;
+				a {
+					font-size:12px;
+					height:27px;
+					line-height:27px;
+				}
+				& > li {
+					a {
+						background:#191919;
+						padding-left:25px;
+					}
+					.sub-menu {
+						& > li a {
+							background:#111;
+							padding-left:35px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.trigger-nav {
+	color:$white;
+	position:absolute;
+	padding:18px 12px;
+	top:0;
+	right:-8px;
+	font-size:17px;
+	z-index:9999;
+	outline:none !important;
+	@include transition(top .275ms);
+	&.active {
+		@include box-sizing;
+	}
+	& > span {
+		float:left;
+		height:24px;
+		line-height:24px;
+	}
+	.ic {
+		margin-right:10px;
+		@include box-sizing;
+		padding-top:5px;
+		@include transition(all 275ms);
+		& > span {
+			background:$white;
+			@include border-radius(1px);
+			display:block;
+			height:3px;
+			margin-bottom:3px;
+			@include transition(all 275ms);
+			width:22px;
+		}
+	}
+	&.active {
+		.ic {
+			@include transform(rotate(-45deg));
+			& > span {
+				background:#aaa;
+				&.bar-1 {
+					@include transform(translateY(6px));
+				}
+				&.bar-2 {
+					opacity:0;
+				}
+				&.bar-3 {
+					@include transform(rotate(-90deg) translateX(5px));
+				}
+			}
+		}
+	}
+}
+
 
 /*********************
 POSTS & CONTENT STYLES
 *********************/
 
 #content {
-	margin-top: 1.5em;
+}
+.page-header {
+	background:$accent-color;
+	color:$white;
+	padding:1.5em 0;
 }
 
-		.hentry {
-			background-color: $white;
-			border-radius: 3px;
-			margin-bottom: 1.5em;
-			border: 1px solid $border-color;
+.hentry {
+	background-color:$white;
+	margin-bottom: 1.5em;
 
-			header {
-				border-bottom: 1px solid $light-gray;
-				padding: 1.5em;
-			}
-
-			footer {
-				padding: 1.5em;
-				border-top: 1px solid $light-gray;
-
-				p {
-					margin: 0;
-				}
-			}
-
-		} /* end .hentry */
-
-		.single-title,
-		.page-title,
-		.entry-title {
-			margin: 0;
-		}
-
-		.single-title {}
-
-		.page-title {}
-
-		.entry-title {}
-
-		.archive-title {}
-
-		/* want to style individual post classes? Booya! */
-		.post-id {}         /* post by id (i.e. post-3) */
-		.post {}            /* general post style */
-		.page {}            /* general article on a page style */
-		.attachment {}      /* general style on an attatchment */
-		.sticky {}          /* sticky post style */
-		.hentry {}          /* hentry class */
-		.category-slug {}   /* style by category (i.e. category-videos) */
-		.tag-slug {}        /* style by tag (i.e. tag-news) */
-
-		/* post meta */
-		.byline {
-			color: $meta-gray;
-			font-style: italic;
-			margin: 0;
-
-			time {}
-		}
-
-		/* entry content */
-		.entry-content {
-			padding: 1.5em 1.5em 0;
-
-			p {
-				margin: 0 0 1.5em;
-			}
-
-
-			ul, ol, table, dl {}
-
-			ul, ol {
-
-				li {}
-
-			}
-
-			ul {
-
-				li {}
-
-			}
-
-			ol {
-
-				li {}
-
-			}
-
-			table {
-				width: 100%;
-				border: 1px solid $gray;
-				margin-bottom: 1.5em;
-
-				caption {
-					margin: 0 0 7px;
-					font-size: 0.75em;
-					color: $meta-gray;
-					text-transform: uppercase;
-					letter-spacing: 1px;
-				}
-			}
-
-			tr {
-				border-bottom: 1px solid $gray;
-
-				&:nth-child(even) {
-					background-color: $light-gray;
-				}
-			}
-
-			td {
-				padding: 7px;
-				border-right: 1px solid $gray;
-
-				&:last-child {
-					border-right: 0;
-				}
-			}
-
-			th {
-				background-color: $light-gray;
-				border-bottom: 1px solid $gray;
-				border-right: 1px solid $gray;
-
-				&:last-child {
-					border-right: 0;
-				}
-			}
-
-			blockquote {
-				margin: 0 0 1.5em 0.75em;
-				padding: 0 0 0 0.75em;
-				border-left: 3px solid $blue;
-				font-style: italic;
-				color: $meta-gray;
-
-				&:before {}
-
-			}
-
-			dl {}
-
-			dt {}
-
-			dd {
-				margin-left: 0;
-				font-size: 0.9em;
-				color: #787878;
-				margin-bottom: 1.5em;
-			}
-
-			img {
-				margin: 0 0 1.5em 0;
-				max-width: 100%;
-				height: auto;
-			}
-
-			/*
-			image alignment on a screen this size may be
-			a bit difficult. It's set to start aligning
-			and floating images at the next breakpoint,
-			but it's up to you. Feel free to change it up.
-			*/
-			.alignleft, img.alignleft {}
-			.alignright, img.alignright {}
-			.aligncenter, img.aligncenter {}
-
-			.size-auto,
-			.size-full,
-			.size-large,
-			.size-medium,
-			.size-thumbnail {
-				max-width: 100%;
-				height: auto;
-			}
-
-			pre {
-				background: $black;
-				color: $light-gray;
-				font-size: 0.9em;
-				padding: 1.5em;
-				margin: 0 0 1.5em;
-				border-radius: 3px;
-			}
-
-		} /* end .entry-content */
-
-		.wp-caption {
-			max-width: 100%;
-			background: #eee;
-			padding: 5px;
-
-			/* images inside wp-caption */
-			img {
-				max-width: 100%;
-				margin-bottom: 0;
-				width: 100%;
-			}
-
-			p.wp-caption-text {
-				font-size: 0.85em;
-				margin: 4px 0 7px;
-				text-align: center;
-			}
-
-		} /* end .wp-caption */
-
-		/* image gallery styles */
-		.gallery {
-
-			dl {
-
-				a {}
-
-				img {}
-
-			}
-
-			dt {}
-
-			dd {}
-
-		} /* end .gallery */
-
-		/* gallery caption styles */
-		.gallery-caption {}
-
-		.size-full {}
-		.size-large {}
-		.size-medium {}
-		.size-thumbnail {}
-
-	// the tag output
-	.tags {
-		margin: 0;
+	header {
+		border-bottom: 1px solid $light-gray;
+		padding:1.5em 0;
 	}
+
+	footer {
+		padding:1.5em 0;
+		border-top: 1px solid $light-gray;
+
+		p {
+			margin: 0;
+		}
+	}
+
+} /* end .hentry */
+
+.header-block {
+	.head-secondary {
+		color:$text-dark;
+	}
+}
+
+.single-title,
+.page-title,
+.entry-title {
+	margin: 0;
+}
+
+.single-title {}
+
+.page-title {}
+
+.entry-title {}
+
+.archive-title {}
+
+/* want to style individual post classes? Booya! */
+.post-id {}         /* post by id (i.e. post-3) */
+.post {}            /* general post style */
+.page {}            /* general article on a page style */
+.attachment {}      /* general style on an attatchment */
+.sticky {}          /* sticky post style */
+.hentry {}          /* hentry class */
+.category-slug {}   /* style by category (i.e. category-videos) */
+.tag-slug {}        /* style by tag (i.e. tag-news) */
+
+/* post meta */
+.byline {
+	color: $meta-gray;
+	font-style: italic;
+	margin: 0;
+
+	time {}
+}
+
+/* entry content */
+.entry-content {
+	padding:1.5em 0 0;
+
+	p {
+		margin: 0 0 1.5em;
+	}
+
+
+	ul, ol, table, dl {}
+
+	ul, ol {
+
+		li {}
+
+	}
+
+	ul {
+
+		li {}
+
+	}
+
+	ol {
+
+		li {}
+
+	}
+
+	table {
+		width: 100%;
+		border: 1px solid $gray;
+		margin-bottom: 1.5em;
+
+		caption {
+			margin: 0 0 7px;
+			font-size: 0.75em;
+			color: $meta-gray;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+	}
+
+	tr {
+		border-bottom: 1px solid $gray;
+
+		&:nth-child(even) {
+			background-color: $light-gray;
+		}
+	}
+
+	td {
+		padding: 7px;
+		border-right: 1px solid $gray;
+
+		&:last-child {
+			border-right: 0;
+		}
+	}
+
+	th {
+		background-color: $light-gray;
+		border-bottom: 1px solid $gray;
+		border-right: 1px solid $gray;
+
+		&:last-child {
+			border-right: 0;
+		}
+	}
+
+	blockquote {
+		margin: 0 0 1.5em 0.75em;
+		padding: 0 0 0 0.75em;
+		border-left: 3px solid $blue;
+		font-style: italic;
+		color: $meta-gray;
+
+		&:before {}
+
+	}
+
+	dl {}
+
+	dt {}
+
+	dd {
+		margin-left: 0;
+		font-size: 0.9em;
+		color: #787878;
+		margin-bottom: 1.5em;
+	}
+
+	img {
+		margin: 0 0 1.5em 0;
+		max-width: 100%;
+		height: auto;
+	}
+
+	/*
+	image alignment on a screen this size may be
+	a bit difficult. It's set to start aligning
+	and floating images at the next breakpoint,
+	but it's up to you. Feel free to change it up.
+	*/
+	.alignleft, img.alignleft {}
+	.alignright, img.alignright {}
+	.aligncenter, img.aligncenter {}
+
+	.size-auto,
+	.size-full,
+	.size-large,
+	.size-medium,
+	.size-thumbnail {
+		max-width: 100%;
+		height: auto;
+	}
+
+	pre {
+		background: $black;
+		color: $light-gray;
+		font-size: 0.9em;
+		padding: 1.5em;
+		margin: 0 0 1.5em;
+		border-radius: 3px;
+	}
+
+} /* end .entry-content */
+
+.wp-caption {
+	max-width: 100%;
+	background: #eee;
+	padding: 5px;
+
+	/* images inside wp-caption */
+	img {
+		max-width: 100%;
+		margin-bottom: 0;
+		width: 100%;
+	}
+
+	p.wp-caption-text {
+		font-size: 0.85em;
+		margin: 4px 0 7px;
+		text-align: center;
+	}
+
+} /* end .wp-caption */
+
+/* image gallery styles */
+.gallery {
+
+	dl {
+
+		a {}
+
+		img {}
+
+	}
+
+	dt {}
+
+	dd {}
+
+} /* end .gallery */
+
+/* gallery caption styles */
+.gallery-caption {}
+
+.size-full {}
+.size-large {}
+.size-medium {}
+.size-thumbnail {}
+
+// the tag output
+.tags {
+	margin: 0;
+}
+
+/******************************************************************
+SLICK SLIDER STYLES
+******************************************************************/
+.slider-container {
+	padding-top:60px;
+}
+.slider {
+	background:$black;
+	.slick-slide {
+		background:$black;
+		background-size:100% auto;
+		background-repeat:no-repeat;
+		.bg-img {
+			width:100%;
+			display:none;
+		}
+		.slide-content {
+			display:none;
+			position:absolute;
+			top:0;
+			width:100%;
+			height:100%;
+			color:$white;
+			.slide-content-block {
+				position:absolute;
+			}
+		}
+		.mobile-slide-content {
+			color:$white;
+			padding-bottom:20px;
+			.mobile-img {
+				width:100%;
+				display:block;
+				margin-bottom:20px;
+			}
+			.wrap {
+				max-height:350px;
+			}
+			h2 {
+				font-size:2em;
+			}
+			h3 {
+				font-size:1.75em;
+			}
+		}
+	}
+	.slick-prev, .slick-next {
+		border:0;
+		text-indent:-9999px;
+		background:rgba($white, .12);
+		position:absolute;
+		top:50%;
+		@include transform(translateY(-50%));
+		width:36px;
+		height:36px;
+		z-index:1;
+		@include border-radius(3px);
+		@include transition(background-color, .5s);
+		&:after {
+			position:absolute;
+			top:50%;
+			@include transform(translate(-50%, -50%));
+		}
+		&:hover {
+			// background-color:rgba($white, .2);
+			background-color:$accent-color;
+		}
+	}
+	.slick-prev {
+		left:0;
+		@include tri(left, 6px, 10px, $white, 0, block, none, doingthisabove);
+		&:after {
+			left:48%;
+		}
+	}
+	.slick-next {
+		right:0;
+		@include tri(right, 6px, 10px, $white, 0, block, none, doingthisabove);
+		&:after {
+			left:52%;
+		}
+	}
+}
+.dots-container {
+	position:relative;
+	top:-30px;
+	height:30px;
+	.slick-dots {
+		text-align:center;
+		& > li {
+			display:inline-block;
+			button {
+				display:block;
+				border:0;
+				text-indent:-9999px;
+				width:30px;
+				height:30px;
+				background:none;
+				position:relative;
+				&:after {
+					content:"";
+					@include border-radius(50%);
+					position:absolute;
+					left:50%;
+					top:50%;
+					@include transform(translate(-50%,-50%));
+					height:7px;
+					width:7px;
+					background:$white;
+					display:block;
+					@include transition(background-color .5s);
+					border:1px solid $white;
+				}
+				&:hover {
+					&:after {
+						background-color:darken($accent-color, 20%);
+					}
+				}
+			}
+			&.slick-active button {
+				&:after {
+					background-color:$accent-color;
+				}
+			}
+		}
+	}
+}
 
 /******************************************************************
 PAGE NAVI STYLES
@@ -496,71 +855,71 @@ PAGE NAVI STYLES
 .wp-prev-next {
 	margin: 1.5em 0;
 }
-	.pagination{
-    text-align: center;
+.pagination {
+	text-align: center;
 
-    ul {
-      display: inline-block;
-      background-color: $white;
-      white-space: nowrap;
-      padding: 0;
-      clear: both;
-      border-radius: 3px;
-    }
+	ul {
+		display: inline-block;
+		background-color: $white;
+		white-space: nowrap;
+		padding: 0;
+		clear: both;
+		border-radius: 3px;
+	}
 
-    li {
-      padding: 0;
-      margin: 0;
-      float: left;
-      display: inline;
-      overflow: hidden;
-      border-right: 1px solid $gray;
-    }
+	li {
+		padding: 0;
+		margin: 0;
+		float: left;
+		display: inline;
+		overflow: hidden;
+		border-right: 1px solid $gray;
+	}
 
-    a, span {
-      margin: 0;
-      text-decoration: none;
-      padding: 0;
-      line-height: 1em;
-      font-size: 1em;
-      font-weight: normal;
-      padding: 0.75em;
-      min-width: 1em;
-      display: block;
-      color: $blue;
+	a, span {
+		margin: 0;
+		text-decoration: none;
+		padding: 0;
+		line-height: 1em;
+		font-size: 1em;
+		font-weight: normal;
+		padding: 0.75em;
+		min-width: 1em;
+		display: block;
+		color: $blue;
 
-      &:hover, &:focus {
-      	background-color: $blue;
-      	color: $white;
-      }
-    }
-
-    .current{
-    	cursor: default;
-    	color: $text-color;
-
-    	&:hover, &:focus {
-    		background-color: $white;
-    		color: $text-color;
-    	}
-    }
-
-  } /* end .bones_page_navi */
-
-	/* fallback previous & next links */
-	.wp-prev-next {
-
-		ul {}
-
-		.prev-link {
-			float: left;
+		&:hover, &:focus {
+			background-color: $blue;
+			color: $white;
 		}
+	}
 
-		.next-link {
-			float: right;
+	.current{
+		cursor: default;
+		color: $text-color;
+
+		&:hover, &:focus {
+			background-color: $white;
+			color: $text-color;
 		}
+	}
 
-	} /* end .wp-prev-next */
+} /* end .bones_page_navi */
+
+/* fallback previous & next links */
+.wp-prev-next {
+
+	ul {}
+
+	.prev-link {
+		float: left;
+	}
+
+	.next-link {
+		float: right;
+	}
+
+} /* end .wp-prev-next */
 
 /******************************************************************
 COMMENT STYLES
@@ -734,7 +1093,7 @@ COMMENT STYLES
 
 	/* comment reply link */
 	.comment-reply-link {
-		@extend .blue-btn;
+		@extend .btn-blue;
 		font-size: 0.9em;
 		float: right;
 
@@ -790,7 +1149,7 @@ COMMENT FORM STYLES
 
 	/* comment submit button */
 	#submit {
-		@extend .blue-btn;
+		@extend .btn-blue;
 		float: right;
 		font-size: 1em;
 	}
@@ -824,37 +1183,50 @@ SIDEBARS & ASIDES
 
 .sidebar {}
 
-	.widgettitle {}
+.widgettitle {}
 
-	.widget {
+.widget {
 
-		ul {
+	ul {
 
-			li {
+		li {
 
-				&:first-child {}
+			&:first-child {}
 
-				&:last-child {}
+			&:last-child {}
 
-				a {}
+			a {}
 
-				/* deep nesting */
-				ul {}
-
-			}
+			/* deep nesting */
+			ul {}
 
 		}
 
 	}
 
-	.no-widgets {
-		background-color: $white;
-		padding: 1.5em;
-		text-align: center;
-		border: 1px solid $border-color;
-		border-radius: 2px;
-		margin-bottom: 1.5em;
+}
+
+.no-widgets {
+	background-color: $white;
+	padding: 1.5em;
+	text-align: center;
+	border: 1px solid $border-color;
+	border-radius: 2px;
+	margin-bottom: 1.5em;
+}
+
+.search-input-container {
+	position:relative;
+	input[type=search] {
+		padding-right:56px;
 	}
+	.btn-search {
+		position:absolute;
+		top:0;
+		right:0;
+		@include border-radius(0 3px 3px 0);
+	}
+}
 
 /*********************
 FOOTER STYLES
@@ -862,7 +1234,7 @@ FOOTER STYLES
 
 .footer {
 	clear: both;
-	background-color: $black;
+	background-color: $dark-gray;
 	color: $light-gray;
 }
 
@@ -886,4 +1258,109 @@ FOOTER STYLES
 	} /* end .footer-links */
 
 
-	.copyright {}
+	.copyright {
+		font-size:11px;
+		color:$gray;
+		height:48px;
+		line-height:48px;
+		margin:0;
+	}
+
+	
+/******************************************
+ADMIN BAR CUSTOMIZATION
+******************************************/
+@keyframes wpadminbarHide {
+	0% {
+		@include transform(translateY(0));
+	}
+	100% {
+		@include transform(translateY(-97%));
+	}
+}
+html body {
+	div#wpadminbar {
+		border-bottom:1px solid #444;
+		z-index:9999 !important;
+		animation-name: wpadminbarHide;
+		animation-iteration-count:1;
+		animation-timing-function:ease-out;
+		animation-duration:2s;
+		@include transform(translateY(-97%));
+		@include transition(transform, 1s);
+		&:before {
+			content:"";
+			display:block;
+			position:absolute;
+			left:0;
+			bottom:-15px;
+			height:15px;
+			width:31px;
+			text-indent:-9999px;
+			@include box-sizing;
+			background:#23282d;
+			/*@include css-gradient($from: #23282d, $to: #353d44, $vstart:"top", $vend:"bottom");*/
+			@include border-radius(0 0 5px 5px);
+			border:1px solid #444;
+			border-top:0;
+			border-left-color:#333;
+			cursor:pointer;
+		}
+		&:after {
+			content:"";
+			border-style:solid;
+			border-color:#555 transparent;
+			border-width:5px 5px 0;
+			position:absolute;
+			margin-left:-5px;
+			left:15px;
+			bottom:-9px;
+			cursor:pointer;
+		}
+		&.wpadminbar-shown {
+			& > .wpadminbar-activator {
+				display:none;
+			}
+		}
+		&:hover {
+			border-bottom:1px solid #444;
+			@include transform(translateY(0));
+		}
+		&.hidden {
+			border-bottom:2px solid transparent;
+			@include transform(translateY(-97%));
+			@include transition(transform, 2s);
+		}
+	}
+	&.hide-admin-bar {
+		div#wpadminbar {
+			display:none;
+		}
+	}
+}
+
+
+/******************************************
+PAGE SPECIFIC STYLES
+******************************************/
+body.page-template-page-slider {
+	.header {
+		@include css-gradient($black, rgba($black, 0));
+	}
+	#logo {
+		&:before {
+			background-image:url(../images/barcid-logo-page-header-slider.png);
+			height:82px;
+		}
+	}
+	#container {
+		#content {
+			min-height:0;
+			padding-top:0;
+			background:$accent-color;
+			.hentry {
+				background:none;
+			}
+		}
+	}
+}

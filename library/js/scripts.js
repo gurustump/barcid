@@ -109,12 +109,44 @@ function loadGravatars() {
  * Put all your regular jQuery in here.
 */
 jQuery(document).ready(function($) {
+	
+	var win = $(window);
+	
+	// Check what page we're on
+	if (typeof isHome === "undefined") var isHome = $('body').hasClass('home');
+	if (typeof isSlider === "undefined") var isSlider = $('body').hasClass('page-template-page-slider');
 
-  /*
-   * Let's fire off the gravatar function
-   * You can remove this if you don't need it
-  */
-  loadGravatars();
+	/*
+	* Let's fire off the gravatar function
+	* You can remove this if you don't need it
+	*/
+	loadGravatars();
+	
+	$('.TRIGGER_NAV').click(function(e) {
+		e.preventDefault();
+		$(this).add('.MAIN_NAV').toggleClass('active');
+		$('html').toggleClass('mobile-nav-active');
+	});
+	
+	$('.MAIN_NAV').on('click','a',function(e) {
+		if (mobileDeviceType()) {
+			$('.TRIGGER_NAV').click();
+		}
+	});
+	
+	if (isSlider) {
+		$('.SLIDER').slick({
+			appendDots: $('.DOTS_CONTAINER'),
+			autoplay: true,
+			autoplaySpeed: 7000,
+			dots: true,
+			infinite: true,
+			pauseOnDotsHover: true,
+			pauseOnHover: false,
+			speed: 1000,
+			waitForAnimate: false
+		});
+	}
 
 
 }); /* end of as page load scripts */

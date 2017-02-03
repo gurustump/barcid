@@ -138,6 +138,9 @@ function bones_scripts_and_styles() {
 		  wp_enqueue_script( 'comment-reply' );
     }
 
+		// adding slick script for sliders
+		wp_register_script( 'slick-js', get_stylesheet_directory_uri() . '/library/js/slick.min.js', array( 'jquery' ), '1.6', true );
+		
 		//adding scripts file in the footer
 		wp_register_script( 'bones-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
 
@@ -154,6 +157,7 @@ function bones_scripts_and_styles() {
 		and your site will load faster.
 		*/
 		wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'slick-js' );
 		wp_enqueue_script( 'bones-js' );
 
 	}
@@ -191,15 +195,15 @@ function bones_theme_support() {
 	// adding post format support
 	add_theme_support( 'post-formats',
 		array(
-			'aside',             // title less blurb
+//			'aside',             // title less blurb
 			'gallery',           // gallery of images
-			'link',              // quick link to other site
-			'image',             // an image
-			'quote',             // a quick quote
-			'status',            // a Facebook like status update
+//			'link',              // quick link to other site
+//			'image',             // an image
+//			'quote',             // a quick quote
+//			'status',            // a Facebook like status update
 			'video',             // video
-			'audio',             // audio
-			'chat'               // chat transcript
+//			'audio',             // audio
+//			'chat'               // chat transcript
 		)
 	);
 
