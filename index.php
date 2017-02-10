@@ -25,23 +25,29 @@
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
+							
+								<?php if (get_post_format() == 'howie') { ?>
+								
+								<?php } else { ?>
 
 								<header class="article-header">
 
-									<h2 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+									<h2 class="h2 entry-title"><a <?php echo get_post_format() == 'link' ? 'target="_blank" ' : ''; ?>href="<?php get_post_format() == 'link' ? the_content() : the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 									<p class="byline entry-meta vcard">
-                                                                        <?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
-                       								/* the time the post was published */
+										<time class="updated entry-time" datetime="<?php echo get_the_time('Y-m-d'); ?>" itemprop="datePublished"><?php echo get_the_time(get_option('date_format')); ?></time>
+										
+												<?php /* printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
+                       								// the time the post was published
                        								'<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
-                       								/* the author of the post */
+                       								// the author of the post 
                        								'<span class="by">'.__( 'by', 'bonestheme').'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
-                    							); ?>
+                    							); */ ?>
 									</p>
 
 								</header>
 
 								<section class="entry-content cf">
-									<?php the_content(); ?>
+									<?php has_excerpt() ? the_excerpt() : ''; ?>
 								</section>
 
 								<footer class="article-footer cf">
@@ -56,6 +62,7 @@
 
 
 								</footer>
+								<?php } ?>
 
 							</article>
 

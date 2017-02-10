@@ -251,6 +251,15 @@ function root_path_shortcode() {
 	$url = home_url('/');
 	return esc_url($url);
 }
-add_shortcode('root_path', 'root_path_shortcode');
+add_shortcode('root_path', 'root_path_shortcode');add_filter( 'genesis_before_loop', 'remove_post_format_title' );
+
+
+function remove_post_format_wpautop() {
+    global $post;
+    if  (has_post_format('link', $post->ID)) {
+        remove_filter('the_content', 'wpautop');
+    }
+}
+add_action('pre_get_posts', 'remove_post_format_wpautop');
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

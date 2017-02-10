@@ -196,12 +196,12 @@ function bones_theme_support() {
 	add_theme_support( 'post-formats',
 		array(
 //			'aside',             // title less blurb
-			'gallery',           // gallery of images
-//			'link',              // quick link to other site
+//			'gallery',           // gallery of images
+			'link',              // quick link to other site
 //			'image',             // an image
 //			'quote',             // a quick quote
 //			'status',            // a Facebook like status update
-			'video',             // video
+//			'video',             // video
 //			'audio',             // audio
 //			'chat'               // chat transcript
 		)

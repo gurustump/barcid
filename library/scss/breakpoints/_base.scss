@@ -1227,6 +1227,32 @@ SIDEBARS & ASIDES
 		@include border-radius(0 3px 3px 0);
 	}
 }
+.ic-container {
+	@include clearfix;
+}
+.ic {
+	width:34px;
+	height:34px;
+	display:inline-block;
+	@include border-radius(50%);
+	background:$gray url(../images/ic-social.png) no-repeat;
+	background-size:cover;
+	&.fb {
+		background-position:-34px 0;
+		background-color:$fb;
+	}
+	&.tw {
+		background-color:$tw;
+	}
+	&.youtube {
+		background-position:-68px 0;
+		background-color:$youtube;
+	}
+	&.contact {
+		background-position:-102px 0;
+		background-color:$contact;
+	}
+}
 
 /*********************
 FOOTER STYLES
@@ -1358,6 +1384,7 @@ body.page-template-page-slider {
 			min-height:0;
 			padding-top:0;
 			background:$accent-color;
+			color:$white;
 			.hentry {
 				background:none;
 			}

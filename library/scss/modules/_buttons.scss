@@ -103,22 +103,22 @@ and it will create a button dependant on those variables.
 		color:$white;
 	}
 	&:before {
-		height:15px;
-		width:15px;
+		height:12px;
+		width:12px;
 		border:3px solid $white;
 		@include border-radius(50%);
 		position:absolute;
 		left:50%;
 		top:50%;
-		@include transform(translate(-8px, -13px));
+		@include transform(translate(-7px, -12px));
 	}
 	&:after {
 		width:3px;
-		height:12px;
+		height:10px;
 		background:$white;
 		position:absolute;
 		left:50%;
 		top:50%;
-		@include transform(rotate(45deg) translate(-6px, 8px));
+		@include transform(rotate(45deg) translate(-5px, 8px));
 	}
 }
