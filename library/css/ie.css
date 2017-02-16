@@ -437,17 +437,22 @@ be seen on the Desktop.
 }
 
 /* line 18, ../scss/breakpoints/_1030up.scss */
+#inner-header {
+  overflow: visible;
+}
+
+/* line 21, ../scss/breakpoints/_1030up.scss */
 #logo {
   font-size: 3em;
 }
 
-/* line 21, ../scss/breakpoints/_1030up.scss */
+/* line 24, ../scss/breakpoints/_1030up.scss */
 .mobile-header-wrap {
   float: left;
   background: none;
 }
 
-/* line 25, ../scss/breakpoints/_1030up.scss */
+/* line 28, ../scss/breakpoints/_1030up.scss */
 .main-nav {
   float: right;
   height: auto;
@@ -455,14 +460,14 @@ be seen on the Desktop.
   position: static;
   background: transparent;
 }
-/* line 31, ../scss/breakpoints/_1030up.scss */
+/* line 34, ../scss/breakpoints/_1030up.scss */
 .main-nav .top-nav {
   position: static;
   background: transparent;
   overflow: visible;
   float: left;
 }
-/* line 37, ../scss/breakpoints/_1030up.scss */
+/* line 40, ../scss/breakpoints/_1030up.scss */
 .main-nav .top-nav > li > a {
   padding: 0 8px;
   font-size: 14px;
@@ -481,33 +486,33 @@ be seen on the Desktop.
   -o-transition: height 0.35s, line-height 0.35s, color 0.35s ease-in-out, background-color 0.35s ease-in-out;
   transition: height 0.35s, line-height 0.35s, color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 }
-/* line 48, ../scss/breakpoints/_1030up.scss */
+/* line 51, ../scss/breakpoints/_1030up.scss */
 .main-nav .top-nav > li.menu-item-search > a, .main-nav .top-nav > li.menu-item-login > a, .main-nav .top-nav > li.menu-item-logout > a {
   text-indent: -9999px;
   width: 18px;
   padding-left: 12px;
 }
-/* line 55, ../scss/breakpoints/_1030up.scss */
+/* line 58, ../scss/breakpoints/_1030up.scss */
 .main-nav .top-nav > li.menu-item-search > a {
   background-position: 50% -282px;
 }
-/* line 60, ../scss/breakpoints/_1030up.scss */
+/* line 63, ../scss/breakpoints/_1030up.scss */
 .main-nav .top-nav > li.menu-item-login > a {
   background-position: 50% -82px;
 }
-/* line 65, ../scss/breakpoints/_1030up.scss */
+/* line 68, ../scss/breakpoints/_1030up.scss */
 .main-nav .top-nav > li.menu-item-logout > a {
   background-position: 50% -182px;
 }
-/* line 69, ../scss/breakpoints/_1030up.scss */
+/* line 72, ../scss/breakpoints/_1030up.scss */
 .main-nav .top-nav > li .sub-menu {
   border: 0;
 }
-/* line 71, ../scss/breakpoints/_1030up.scss */
+/* line 74, ../scss/breakpoints/_1030up.scss */
 .main-nav .top-nav > li .sub-menu > li {
   float: none;
 }
-/* line 73, ../scss/breakpoints/_1030up.scss */
+/* line 76, ../scss/breakpoints/_1030up.scss */
 .main-nav .top-nav > li .sub-menu > li a {
   /*background:#333;
   @include css-gradient-plus-img($from: rgba($black, .1), $to: rgba($black, 0), $vstart:"top", $vend:"bottom", $url:"../images/skins-gray-light-grunge.jpg");*/
@@ -517,18 +522,18 @@ be seen on the Desktop.
   margin-top: 0;
   padding: 10px 25px;
 }
-/* line 82, ../scss/breakpoints/_1030up.scss */
+/* line 85, ../scss/breakpoints/_1030up.scss */
 .main-nav .top-nav > li .sub-menu > li .sub-menu {
   background: transparent;
 }
-/* line 84, ../scss/breakpoints/_1030up.scss */
+/* line 87, ../scss/breakpoints/_1030up.scss */
 .main-nav .top-nav > li .sub-menu > li .sub-menu > li a {
   /*background:#333;
   @include css-gradient-plus-img($from: rgba($black, .1), $to: rgba($black, 0), $vstart:"top", $vend:"bottom", $url:"../images/skins-gray-light-grunge.jpg");*/
   background: transparent;
 }
 
-/* line 95, ../scss/breakpoints/_1030up.scss */
+/* line 98, ../scss/breakpoints/_1030up.scss */
 .trigger-nav {
   display: none;
 }
@@ -544,7 +549,7 @@ POSTS & CONTENT STYLES
   visibility: hidden;
   clear: both;
 }
-/* line 108, ../scss/breakpoints/_1030up.scss */
+/* line 111, ../scss/breakpoints/_1030up.scss */
 .header-block .head-primary, .header-block .head-secondary {
   width: 50%;
   float: left;
@@ -554,18 +559,18 @@ POSTS & CONTENT STYLES
   -o-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 113, ../scss/breakpoints/_1030up.scss */
+/* line 116, ../scss/breakpoints/_1030up.scss */
 .header-block .head-primary {
   padding-right: 20px;
   border-right: 1px solid #008ff0;
 }
-/* line 117, ../scss/breakpoints/_1030up.scss */
+/* line 120, ../scss/breakpoints/_1030up.scss */
 .header-block .head-secondary {
   padding-left: 20px;
   border-left: 1px solid #008ff0;
   margin-left: -1px;
 }
-/* line 122, ../scss/breakpoints/_1030up.scss */
+/* line 125, ../scss/breakpoints/_1030up.scss */
 .header-block h1 {
   margin-bottom: .25em;
 }
@@ -573,21 +578,21 @@ POSTS & CONTENT STYLES
 /******************************************************************
 SLICK SLIDER STYLES
 ******************************************************************/
-/* line 130, ../scss/breakpoints/_1030up.scss */
+/* line 133, ../scss/breakpoints/_1030up.scss */
 .slider-container {
   height: 100%;
   padding-top: 0;
 }
 
-/* line 134, ../scss/breakpoints/_1030up.scss */
+/* line 137, ../scss/breakpoints/_1030up.scss */
 .slider {
   height: 100%;
 }
-/* line 136, ../scss/breakpoints/_1030up.scss */
+/* line 139, ../scss/breakpoints/_1030up.scss */
 .slider .slick-list, .slider .slick-track {
   height: 100%;
 }
-/* line 139, ../scss/breakpoints/_1030up.scss */
+/* line 142, ../scss/breakpoints/_1030up.scss */
 .slider .slick-slide {
   position: relative;
   background-size: cover;
@@ -596,19 +601,19 @@ SLICK SLIDER STYLES
   	display:block;
   } */
 }
-/* line 143, ../scss/breakpoints/_1030up.scss */
+/* line 146, ../scss/breakpoints/_1030up.scss */
 .slider .slick-slide.slide-theme-light {
   background: white;
 }
-/* line 145, ../scss/breakpoints/_1030up.scss */
+/* line 148, ../scss/breakpoints/_1030up.scss */
 .slider .slick-slide.slide-theme-light .slide-content {
   color: #555555;
 }
-/* line 152, ../scss/breakpoints/_1030up.scss */
+/* line 155, ../scss/breakpoints/_1030up.scss */
 .slider .slick-slide .slide-content {
   display: block;
 }
-/* line 154, ../scss/breakpoints/_1030up.scss */
+/* line 157, ../scss/breakpoints/_1030up.scss */
 .slider .slick-slide .slide-content .slide-content-block {
   padding: 15px 28px;
   -webkit-box-sizing: border-box;
@@ -617,15 +622,15 @@ SLICK SLIDER STYLES
   -o-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 158, ../scss/breakpoints/_1030up.scss */
+/* line 161, ../scss/breakpoints/_1030up.scss */
 .slider .slick-slide .slide-content h2 {
   font-size: 4em;
 }
-/* line 161, ../scss/breakpoints/_1030up.scss */
+/* line 164, ../scss/breakpoints/_1030up.scss */
 .slider .slick-slide .slide-content h3 {
   font-size: 2.75em;
 }
-/* line 165, ../scss/breakpoints/_1030up.scss */
+/* line 168, ../scss/breakpoints/_1030up.scss */
 .slider .slick-slide .mobile-slide-content {
   display: none;
 }

@@ -256,7 +256,7 @@ add_shortcode('root_path', 'root_path_shortcode');add_filter( 'genesis_before_lo
 
 function remove_post_format_wpautop() {
     global $post;
-    if  (has_post_format('link', $post->ID)) {
+    if  ((is_single() && has_post_format('link', $post->ID)) || is_home()) {
         remove_filter('the_content', 'wpautop');
     }
 }

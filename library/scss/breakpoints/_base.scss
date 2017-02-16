@@ -54,6 +54,10 @@ body {
 		@include box-sizing;
 	}
 }
+#inner-header {
+	position:relative;
+	overflow-x:hidden;
+}
 
 /********************
 WORDPRESS BODY CLASSES
@@ -436,6 +440,7 @@ and more scalable.
 		line-height:24px;
 	}
 	.ic {
+		background:none;
 		margin-right:10px;
 		@include box-sizing;
 		padding-top:5px;
@@ -506,12 +511,16 @@ POSTS & CONTENT STYLES
 	.head-secondary {
 		color:$text-dark;
 	}
+	img, iframe {
+		max-width:100%;
+	}
 }
 
 .single-title,
 .page-title,
 .entry-title {
 	margin: 0;
+	letter-spacing:0;
 }
 
 .single-title {}
