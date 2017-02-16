@@ -57,6 +57,7 @@ body {
 #inner-header {
 	position:relative;
 	overflow-x:hidden;
+	overflow-y:visible;
 }
 
 /********************
@@ -509,7 +510,7 @@ POSTS & CONTENT STYLES
 
 .header-block {
 	.head-secondary {
-		color:$text-dark;
+		// color:$text-dark;
 	}
 	img, iframe {
 		max-width:100%;

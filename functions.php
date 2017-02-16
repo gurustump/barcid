@@ -253,7 +253,7 @@ function root_path_shortcode() {
 }
 add_shortcode('root_path', 'root_path_shortcode');add_filter( 'genesis_before_loop', 'remove_post_format_title' );
 
-
+/*
 function remove_post_format_wpautop() {
     global $post;
     if  ((is_single() && has_post_format('link', $post->ID)) || is_home()) {
@@ -261,5 +261,5 @@ function remove_post_format_wpautop() {
     }
 }
 add_action('pre_get_posts', 'remove_post_format_wpautop');
-
+*/
 /* DON'T DELETE THIS CLOSING TAG */ ?>
