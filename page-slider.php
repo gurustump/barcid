@@ -50,7 +50,7 @@
 									<div class="slide-body-text"><?php echo wpautop($slide[body_text]) ; ?></div>
 									<?php } ?>
 									<?php if ($slide[link_url]) { ?>
-									<p class="slide-link"><a href="<?php echo $slide[link_url]; ?>>"><?php echo $slide[link-text]; ?></a></p>
+									<p class="slide-link"><a href="<?php echo $slide[link_url]; ?>"<?php echo $slide[link_external] ? ' target="_blank"' : ''; ?>><?php echo $slide[link_text]; ?></a></p>
 									<?php } ?>
 									<?php // print_r($slide); ?>
 								</div>

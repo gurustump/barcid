@@ -744,6 +744,14 @@ SLICK SLIDER STYLES
 			color:$white;
 			.slide-content-block {
 				position:absolute;
+				.slide-body-text {
+					font-size:1.5em;
+				}
+				.slide-link a {
+					text-transform:uppercase;
+					font-size:900;
+					text-decoration:none;
+				}
 			}
 		}
 		.mobile-slide-content {
