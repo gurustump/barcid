@@ -20,6 +20,9 @@ be seen on the Desktop.
 }
 #logo {
 	font-size:3em;
+	a {
+		padding-left:35px;
+	}
 }
 .mobile-header-wrap {
 	float:left;
@@ -42,8 +45,8 @@ be seen on the Desktop.
 				font-size:14px;
 				margin-top:0;
 				border:0;
-				height:60px;
-				line-height:60px;
+				height:70px;
+				line-height:70px;
 				@include box-sizing;
 				@include transition(height .35s, line-height .35s, color 0.35s ease-in-out, background-color 0.35s ease-in-out);
 			}
@@ -158,10 +161,10 @@ SLICK SLIDER STYLES
 				padding:15px 28px;
 				@include box-sizing;
 			}
-			h2 {
+			.h2 {
 				font-size:4em;
 			}
-			h3 {
+			.h3 {
 				font-size:2.75em;
 			}
 		}

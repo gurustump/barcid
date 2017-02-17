@@ -23,34 +23,46 @@
 							<div class="mobile-slide-content">
 								<img class="mobile-img" src="<?php echo $mobileImage[0]; ?>" />
 								<div class="wrap">
-									<?php if ($slide[heading]) { ?>
-									<h2><?php echo $slide[heading]; ?></h2>
-									<?php } ?>
-									<?php if ($slide[subheading]) { ?>
-									<h3><?php echo $slide[subheading]; ?></h3>
-									<?php } ?>
-									<?php if ($slide[body_text]) { ?>
-									<div class="slide-body-text"><?php echo wpautop($slide[body_text]) ; ?></div>
-									<?php } ?>
 									<?php if ($slide[link_url]) { ?>
-									<p class="slide-link"><a href="<?php echo $slide[link_url]; ?>>"><?php echo $slide[link-text]; ?></a></p>
+									<a href="<?php echo $slide[link_url]; ?>"<?php echo $slide[link_external] ? ' target="_blank"' : ''; ?>>
+									<?php } ?>
+										<?php if ($slide[heading]) { ?>
+										<span class="h2"><?php echo $slide[heading]; ?></span>
+										<?php } ?>
+										<?php if ($slide[subheading]) { ?>
+										<span class="h3"><?php echo $slide[subheading]; ?></span>
+										<?php } ?>
+										<?php if ($slide[body_text]) { ?>
+										<span class="slide-body-text"><?php echo wpautop($slide[body_text]) ; ?></span>
+										<?php } ?>
+										<?php if ($slide[link_text]) { ?>
+										<span class="slide-link"><?php echo $slide[link_text]; ?></span>
+										<?php } ?>
+									<?php if ($slide[link_url]) { ?>
+									</a>
 									<?php } ?>
 								</div>
 							</div>
 							<?php /* <img class="bg-img" src="<?php echo $bgImage[0]; ?>" /> */ ?>
 							<div class="slide-content">
 								<div class="slide-content-block" style="width:<?php echo $slideWidth; ?>%;left:<?php echo $slideHPos; ?>%;top:<?php echo $slideVPos; ?>%;transform:translate(-<?php echo $slideHPos; ?>%,-<?php echo $slideVPos; ?>%);<?php echo $slide[bgcolor] ? 'background-color:'.$slide[bgcolor] : ''; ?>">
-									<?php if ($slide[heading]) { ?>
-									<h2><?php echo $slide[heading]; ?></h2>
-									<?php } ?>
-									<?php if ($slide[subheading]) { ?>
-									<h3><?php echo $slide[subheading]; ?></h3>
-									<?php } ?>
-									<?php if ($slide[body_text]) { ?>
-									<div class="slide-body-text"><?php echo wpautop($slide[body_text]) ; ?></div>
-									<?php } ?>
 									<?php if ($slide[link_url]) { ?>
-									<p class="slide-link"><a href="<?php echo $slide[link_url]; ?>"<?php echo $slide[link_external] ? ' target="_blank"' : ''; ?>><?php echo $slide[link_text]; ?></a></p>
+									<a href="<?php echo $slide[link_url]; ?>"<?php echo $slide[link_external] ? ' target="_blank"' : ''; ?>>
+									<?php } ?>
+										<?php if ($slide[heading]) { ?>
+										<span class="h2"><?php echo $slide[heading]; ?></span>
+										<?php } ?>
+										<?php if ($slide[subheading]) { ?>
+										<span class="h3"><?php echo $slide[subheading]; ?></span>
+										<?php } ?>
+										<?php if ($slide[body_text]) { ?>
+										<span class="slide-body-text"><?php echo wpautop($slide[body_text]) ; ?></span>
+										<?php } ?>
+										<?php if ($slide[link_text]) { ?>
+										<span class="slide-link"><?php echo $slide[link_text]; ?></span>
+										<?php } ?>
+									<?php if ($slide[link_url]) { ?>
+									</a>
 									<?php } ?>
 									<?php // print_r($slide); ?>
 								</div>

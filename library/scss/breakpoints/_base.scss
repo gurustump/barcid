@@ -50,7 +50,7 @@ body {
 	#content {
 		min-height:100%;
 		margin-bottom:-48px;
-		padding:60px 0 48px;
+		padding:70px 0 48px;
 		@include box-sizing;
 	}
 }
@@ -209,27 +209,30 @@ HEADER STYLES
 	float:left;
 	font-weight:900;
 	text-transform:uppercase;
-	height:60px;
-	line-height:60px;
+	height:70px;
+	line-height:70px;
 	hyphens:none;
 	font-size:2em;
 	position:relative;
 	a {
 		color:$white;
 		display:block;
-		padding-left:75px;
+		padding-left:43px;
 		&:hover, &:focus, &:active {
 			outline:0;
+		}
+		&:first-letter {
+			color:transparent;
 		}
 	}
 	&:before {
 		content:"";
-		background:url(../images/barcid-logo-page-header.png) no-repeat;
+		background:url(../images/barcid-logo-page-header-slider.png) no-repeat;
 		display:block;
 		position:absolute;
-		top:1px;
-		left:-27px;
-		height:100%;
+		top:-6px;
+		left:-20px;
+		height:76px;
 		width:87px;
 		pointer-events:none;
 	}
@@ -735,7 +738,7 @@ POSTS & CONTENT STYLES
 SLICK SLIDER STYLES
 ******************************************************************/
 .slider-container {
-	padding-top:60px;
+	padding-top:70px;
 }
 .slider {
 	background:$black;
@@ -743,9 +746,28 @@ SLICK SLIDER STYLES
 		background:$black;
 		background-size:100% auto;
 		background-repeat:no-repeat;
+		&.slide-theme-light {
+			background:$white;
+			.slide-content {
+				.slide-content-block {
+					a {
+						color:$med-dark-gray;
+					}
+				}
+			}
+		}
 		.bg-img {
 			width:100%;
 			display:none;
+		}
+		.h2, .h3 {
+			display:block;
+		}
+		.slide-link {
+			text-transform:uppercase;
+			font-weight:900;
+			color:$link-color;
+			display:block;
 		}
 		.slide-content {
 			display:none;
@@ -759,15 +781,13 @@ SLICK SLIDER STYLES
 				.slide-body-text {
 					font-size:1.5em;
 				}
-				.slide-link a {
-					text-transform:uppercase;
-					font-size:900;
+				a {
+					color:$white;
 					text-decoration:none;
 				}
 			}
 		}
 		.mobile-slide-content {
-			color:$white;
 			padding-bottom:20px;
 			.mobile-img {
 				width:100%;
@@ -777,10 +797,14 @@ SLICK SLIDER STYLES
 			.wrap {
 				max-height:350px;
 			}
-			h2 {
+			a {
+				color:$white;
+				text-decoration:none;
+			}
+			.h2 {
 				font-size:2em;
 			}
-			h3 {
+			.h3 {
 				font-size:1.75em;
 			}
 		}
@@ -1395,8 +1419,7 @@ body.page-template-page-slider {
 	}
 	#logo {
 		&:before {
-			background-image:url(../images/barcid-logo-page-header-slider.png);
-			height:82px;
+			height:89px;
 		}
 	}
 	#container {
