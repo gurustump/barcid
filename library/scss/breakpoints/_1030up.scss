@@ -19,7 +19,8 @@ be seen on the Desktop.
 	overflow:visible;
 }
 #logo {
-	font-size:3em;
+	// font-size:3em;
+	font-size:42px;
 	a {
 		padding-left:35px;
 	}
@@ -162,10 +163,12 @@ SLICK SLIDER STYLES
 				@include box-sizing;
 			}
 			.h2 {
-				font-size:4em;
+				// font-size:4em;
+				font-size:56px;
 			}
 			.h3 {
-				font-size:2.75em;
+				// font-size:2.75em;
+				font-size:38px;
 			}
 		}
 		.mobile-slide-content {
