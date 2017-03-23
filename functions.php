@@ -253,6 +253,27 @@ function root_path_shortcode() {
 }
 add_shortcode('root_path', 'root_path_shortcode');add_filter( 'genesis_before_loop', 'remove_post_format_title' );
 
+// Video embed shortcode: adds container for variable width and height
+function video_embed_shortcode($atts) {
+	$a = shortcode_atts( array(
+		'embed' => '',
+		'width' => '',
+		'align' => 'alignnone'
+	), $atts);
+	return '<div class="video-embed-container'.($a['align'] ?  ' '.$a['align'] : '').'"'.($a['width'] ?  ' style="width:'.$a['width'].'px"' : '').'><div class="video-embed">'.$a['embed'].'</div></div>';
+}
+add_shortcode('video_embed','video_embed_shortcode');
+
+// Image embed code: adds container to set width
+function image_embed_shortcode($atts, $content) {
+	$a = shortcode_atts( array(
+		'width' => '',
+		'align' => 'alignnone'
+	), $atts);
+	return '<div class="image-embed '.$a['align'].'"'.($a['width'] ? ' style="width:'.$a['width'].'px"' : '').'>'.$content.'</div>';
+}
+add_shortcode('image_embed','image_embed_shortcode');
+
 /*
 function remove_post_format_wpautop() {
     global $post;

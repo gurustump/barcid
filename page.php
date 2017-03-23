@@ -8,17 +8,27 @@
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 							<?php $headBlockMeta = get_post_meta(get_the_ID(), '_barcid_page_header_block',true); ?>
+							<pre style="display:none"><?php print_r($headBlockMeta); ?>test</pre>
 							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-								<header class="page-header article-header<?php echo $headBlockMeta[0][primary_head] || $headBlockMeta[0][secondary_head] ? ' header-block' : ''; ?>">
+								<?php 
+								$headBlockActive = is_array($headBlockMeta) && count($headBlockMeta[0]) > 0;
+								if ($headBlockActive) {
+									$headBlockPrimaryContent = $headBlockMeta[0][primary_head];
+									$headBlockSecondaryContent = $headBlockMeta[0][secondary_head]; 
+									// echo count($headBlockMeta);
+								} else {
+									// echo 'nope';
+								} ?>
+								<header class="page-header article-header<?php echo $headBlockActive ? ' header-block' : ''; ?>">
 									<div class="wrap">
 										<div class="head-primary">
 											<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
-											<?php echo wpautop($headBlockMeta[0][primary_head]) ; ?>
+											<?php echo wpautop($headBlockPrimaryContent); ?>
 										</div>
-										<?php if ($headBlockMeta[0][secondary_head]) { ?>
+										<?php if ($headBlockSecondaryContent) { ?>
 										<div class="head-secondary">
-											<?php echo wpautop($headBlockMeta[0][secondary_head]) ; ?>
+											<?php echo wpautop($headBlockSecondaryContent); ?>
 										</div>
 										<?php } ?>
 									</div>
